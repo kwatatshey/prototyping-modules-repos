@@ -28,7 +28,6 @@ update-readme:
 	@echo "| ----------- | ---------- |" >> README.md
 	@for module in $(MODULES); do \
 		module_name=$$(echo $$module | tr / -); \
-		# module_url=$$(echo "https://github.com/audi-acs/acs-image-factory-terraform-modules/tree/main/$$module"); \
 		module_url=$$(echo "https://github.com/kwatatshey/prototyping-modules-repos/tree/main/$$module"); \
 		echo "| $$module_name | $$module_url |" >> README.md; \
 	done

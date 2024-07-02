@@ -57,14 +57,3 @@ git config core.hooksPath hooks
 | terraform-state-resources | https://github.com/audi-acs/acs-image-factory-terraform-modules/tree/main/terraform-state-resources |
 | waf-resources | https://github.com/audi-acs/acs-image-factory-terraform-modules/tree/main/waf-resources |
 
-
-
-your-project-directory/
-├── config/
-│   ├── kubeconfig.tpl
-│   ├── argocd-tst.tf
-│   ├── values/
-│   │   ├── argocd-app.yaml
-│   ├── sealed-secrets/
-│   │   ├── sealed-ssh-secret.yaml
-│   ├── ... (other configuration files)
