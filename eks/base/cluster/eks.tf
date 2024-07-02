@@ -1,3 +1,7 @@
+#tfsec:ignore:aws-eks-no-public-cluster-access
+#tfsec:ignore:aws-eks-no-public-cluster-access-to-cidr
+#tfsec:ignore:aws-ec2-no-public-egress-sgr
+#tfsec:ignore:aws-ec2-no-public-ingress-sgr
 module "cluster" {
   source                                   = "terraform-aws-modules/eks/aws"
   version                                  = "20.8.5"

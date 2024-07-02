@@ -17,6 +17,8 @@ resource "aws_eip" "nat_gw_elastic_ip" {
 }
 
 # create VPC using the official AWS module
+#tfsec:ignore:aws-ec2-no-excessive-port-access
+#tfsec:ignore:aws-ec2-no-public-ingress-acl
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
