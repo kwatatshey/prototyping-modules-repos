@@ -1,0 +1,64 @@
+applications: 
+- name: root-helm-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  project: default
+  source:
+    repoURL: git@github.com:kwatatshey/argocd.git
+    targetRevision: HEAD
+    # path: dev/apps
+    path: dev
+    # directory:
+    #   recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+      allowEmpty: false
+    syncOptions:
+    - CreateNamespace=true
+    - Validate=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+
+
+
+###
+
+
+# resource "kubectl_manifest" "application_argo_config" {
+#   yaml_body = yamlencode({
+#     apiVersion = "argoproj.io/v1alpha1"
+#     kind       = "Application"
+#     metadata = {
+#       name      = "argocd-parent-app"
+#       namespace = kubernetes_namespace.eks_namespaces["argocd"].metadata[0].name
+#     }
+#     spec = {
+#       destination = {
+#         # This parameter should be changed in case applications should be 
+#         # deployed to an external cluster.
+#         # External clusters need to be registered beforehand
+#         server = "https://kubernetes.default.svc"
+#       }
+#       project = "default"
+#       source = {
+#         path           = "./"
+#         repoURL        = "git@github.com:kwatatshey/argocd.git"
+#         targetRevision = "main"
+#       }
+#       # Sync policy to automatically apply changes from Git
+#       syncPolicy = {
+#         syncOptions = ["Replace=true"]
+#         automated = {  # Enable automated sync
+#           prune = true # Prune option will delete resources that are not in Git
+#           # allowEmpty = true  # AllowEmpty option will apply changes even if the Git repository is empty
+#           selfHeal = false # Self-heal option will automatically apply changes from Git
+#         }
+#       }
+#     }
+#   })
+# }
