@@ -1,6 +1,6 @@
-# acs-image-factory-terraform-modules
+# prototyping-modules-repos
 
-This repository contains all the Terraform modules used by Image Factory 2.0.
+This repository contains all the Terraform modules used by to prototype anything 
 
 ## Requirements
 
