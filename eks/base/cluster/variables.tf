@@ -52,6 +52,7 @@ variable "developer_user_group" {
 
 
 variable "oic_role_configurations" {
+  description = "values for the OIDC role configurations."
   type = map(object({
     role_name           = string
     assume_role_actions = list(string)

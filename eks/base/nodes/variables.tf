@@ -34,19 +34,80 @@ variable "cluster_name" {
 
 
 
-variable "name" {}
-variable "ami_type" {}
-variable "min_size" {}
-variable "max_size" {}
-variable "desired_size" {}
-variable "instance_types" {}
-variable "capacity_type" {}
+variable "name" {
+  type        = string
+  description = "The name of the security group"
+}
+variable "ami_type" {
+  type        = string
+  description = "The type of AMI to use for the EKS managed node group."
+}
+
+variable "min_size" {
+  type        = number
+  description = "Minimum number of nodes in the EKS managed node group."
+}
+
+variable "max_size" {
+  type        = number
+  description = "Maximum number of nodes in the EKS managed node group."
+}
+variable "desired_size" {
+  type        = number
+  description = "Desired number of nodes in the EKS managed node group."
+}
+variable "instance_types" {
+  type        = list(string)
+  description = "List of instance types to use for the EKS managed node group."
+}
+
+variable "capacity_type" {
+  type        = string
+  description = "Capacity type for the EKS managed node group."
+}
 # variable "use_custom_launch_template" {}
 # variable "disk_size" {}
-variable "network_interfaces" {}
-variable "eks_managed_node_groups" {}
-variable "ebs_kms_key_arn" {}
-variable "tag_specifications" {}
+variable "network_interfaces" {
+  type = list(object({
+    associate_public_ip_address = bool
+    delete_on_termination       = bool
+    # description                 = string
+    # device_index                = number
+    # security_groups              = list(string)
+    # subnet_id                   = string
+  }))
+  description = "List of network interfaces to attach to the EKS managed node group."
+}
+
+variable "eks_managed_node_groups" {
+  description = "values for the EKS managed node groups."
+  type = map(object({
+    ami_type       = string
+    min_size       = number
+    max_size       = number
+    desired_size   = number
+    instance_types = list(string)
+    # tags           = optional(map(string), {}) # Default to an empty map
+    capacity_type = string
+    # use_custom_launch_template = bool
+    # disk_size                  = number
+    network_interfaces = list(object({
+      delete_on_termination       = bool
+      associate_public_ip_address = bool
+    }))
+  }))
+}
+
+# variable "eks_managed_node_groups" {}
+variable "ebs_kms_key_arn" {
+  type        = string
+  description = "The ARN of the KMS key to use for EBS encryption."
+}
+
+variable "tag_specifications" {
+  type        = list(string)
+  description = "List of tag specifications to apply to the EKS managed node group."
+}
 # variable "tags" {}
 
 # variable "cluster_iam_role_arn" {}
@@ -54,9 +115,14 @@ variable "tag_specifications" {}
 
 
 
-variable "vpc_id" {}
-variable "subnet_ids" {}
-variable "cluster_version" {}
+variable "subnet_ids" {
+  type        = list(string)
+  description = "List of subnet IDs to launch the EKS managed node group in."
+}
+variable "cluster_version" {
+  type        = string
+  description = "The Kubernetes server version for the EKS cluster."
+}
 
 
 

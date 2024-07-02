@@ -6,4 +6,4 @@ variable "cluster_iam_role_arn" {
 variable "cluster_name" {
   type        = string
   description = "EKS cluster name."
-}   
+}

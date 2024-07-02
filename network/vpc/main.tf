@@ -74,13 +74,7 @@ module "vpc" {
 }
 
 locals {
-  name    = "ex-${basename(path.cwd)}"
   private = "private"
   public  = "public"
 
-  tags = {
-    Example    = local.name
-    GithubRepo = "terraform-aws-eks"
-    GithubOrg  = "terraform-aws-modules"
-  }
 }

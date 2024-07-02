@@ -38,7 +38,7 @@ variable "enabled" {
 }
 
 #Module      : User Pool
-#Description : 
+#Description :
 
 variable "alias_attributes" {
   type        = list(any)
@@ -390,12 +390,6 @@ variable "domain_certificate_arn" {
   description = "The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain"
   type        = string
   default     = null
-}
-
-variable "allow_unauthenticated_identities" {
-  description = "Whether the identity pool supports unauthenticated logins or not."
-  type        = bool
-  default     = false
 }
 
 #########################################################################################################################################

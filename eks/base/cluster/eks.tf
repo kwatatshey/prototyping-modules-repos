@@ -33,7 +33,6 @@ module "cluster" {
 
 locals {
   private = "private"
-  public  = "public"
 }
 
 locals {

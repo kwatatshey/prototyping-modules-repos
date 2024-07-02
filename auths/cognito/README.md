@@ -45,7 +45,7 @@
 <hr>
 
 
-We are a group of DevOps engineers & architects, joining hands in this ever evolving digital landscape. With our strong belief in Automation; just like microservices, always on the lookout to split the the infrastructure into smaller connected resources (database, cluster and more) which could be standardized, are manageable, scalable, secure & follow industry best practices. 
+We are a group of DevOps engineers & architects, joining hands in this ever evolving digital landscape. With our strong belief in Automation; just like microservices, always on the lookout to split the the infrastructure into smaller connected resources (database, cluster and more) which could be standardized, are manageable, scalable, secure & follow industry best practices.
 
 
 This module includes Terraform open source, examples, and automation tests (for better understanding), which would help you create and improve your infrastructure with minimalistic coding.
@@ -79,7 +79,7 @@ This table contains both Prerequisites and Providers:
 Refer to complete documentation: [here](docs/io.md)
 
 
-<!-- 
+<!--
 ## Module Dependencies
 
 This module has dependencies on:
@@ -108,7 +108,7 @@ Refer [here](CHANGELOG.md).
 
 ## ✨ Contributors
 
-Big thanks to our contributors for elevating our project with their dedication and expertise! But, we do not wish to stop there, would like to invite contributions from the community in improving these projects and making them more versatile for better reach. Remember, every bit of contribution is immensely valuable, as, together, we are moving in only 1 direction, i.e. forward. 
+Big thanks to our contributors for elevating our project with their dedication and expertise! But, we do not wish to stop there, would like to invite contributions from the community in improving these projects and making them more versatile for better reach. Remember, every bit of contribution is immensely valuable, as, together, we are moving in only 1 direction, i.e. forward.
 
 <a href="https://github.com/clouddrove/terraform-aws-cognito/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=clouddrove/terraform-aws-cognito&max" />
@@ -136,7 +136,7 @@ Big thanks to our contributors for elevating our project with their dedication a
 
 
 
-## Feedback 
+## Feedback
 Spot a bug or have thoughts to share with us? Let's squash it together! Log it in our [issue tracker](https://github.com/clouddrove/terraform-aws-cognito/issues), feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
 Show some love with a ★ on [our GitHub](https://github.com/clouddrove/terraform-aws-cognito)!  if our work has brightened your day! – your feedback fuels our journey!
@@ -148,7 +148,7 @@ We have [*100+ Terraform modules*][terraform_modules] 🙌. You could consider t
 
 - [Terraform Module Registry:](https://registry.terraform.io/namespaces/clouddrove) Discover our Terraform modules here.
 
-- [Terraform Modules for AWS/Azure Modules:](https://github.com/clouddrove/toc) Explore our comprehensive Table of Contents for easy navigation through our documentation for modules pertaining to AWS, Azure & GCP. 
+- [Terraform Modules for AWS/Azure Modules:](https://github.com/clouddrove/toc) Explore our comprehensive Table of Contents for easy navigation through our documentation for modules pertaining to AWS, Azure & GCP.
 
 - [Terraform Modules for Digital Ocean:](https://github.com/terraform-do-modules/toc) Check out our specialized Terraform modules for Digital Ocean.
 
@@ -174,7 +174,7 @@ Join our tech elites [Join Now][slack] 🚀
  Click [here][blog] :books: :star2:
 
 ## Tap into our capabilities
-We provide a platform for organizations to engage with experienced top-tier DevOps & Cloud services. Tap into our pool of certified engineers and architects to elevate your DevOps and Cloud Solutions. 
+We provide a platform for organizations to engage with experienced top-tier DevOps & Cloud services. Tap into our pool of certified engineers and architects to elevate your DevOps and Cloud Solutions.
 
 At [CloudDrove][website], has extensive experience in designing, building & migrating environments, securing, consulting, monitoring, optimizing, automating, and maintaining complex and large modern systems. With remarkable client footprints in American & European corridors, our certified architects & engineers are ready to serve you as per your requirements & schedule. Write to us at [business@clouddrove.com](mailto:business@clouddrove.com).
 
@@ -194,14 +194,14 @@ At [CloudDrove][website], has extensive experience in designing, building & migr
 
 
 
-This case is for one user pool with multiple mutilple users and client but one identity pool with multiple 
+This case is for one user pool with multiple mutilple users and client but one identity pool with multiple
 cognito_identity_providers from each client (client ID and provider name which is the endpoint)
 
 But In order to have one user pool with multiple mutilple users and client but mutilpe identity pools with separate cognito_identity_providers from each client (client ID and provider name which is the endpoint)
 
-do this 
+do this
 
-Replace with this 
+Replace with this
 
 data "aws_iam_policy_document" "authenticated_assume" {
   statement {
@@ -274,7 +274,7 @@ resource "aws_cognito_identity_pool_roles_attachment" "identity_pool" {
 
 
 ====
-and this 
+and this
 # resource "aws_cognito_identity_pool" "identity_pool" {
 #   count                            = var.enabled ? 1 : 0
 #   identity_pool_name               = format("%s_identity_pool", module.labels.id)
@@ -316,6 +316,128 @@ and this
 # }
 
 
-But if don't want useer acces : authenticated access , you prefer => guess access use the orginal module without changing anything 
+But if don't want useer acces : authenticated access , you prefer => guess access use the orginal module without changing anything
 
-https://github.com/clouddrove/terraform-aws-cognito.git
+https://github.com/clouddrove/terraform-aws-cognito.git<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.6 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.31.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.31.0 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_auth-role"></a> [auth-role](#module\_auth-role) | clouddrove/iam-role/aws | 1.3.1 |
+| <a name="module_labels"></a> [labels](#module\_labels) | clouddrove/labels/aws | 1.3.0 |
+| <a name="module_unauth-role"></a> [unauth-role](#module\_unauth-role) | clouddrove/iam-role/aws | 1.3.1 |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_cognito_identity_pool.identity_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_identity_pool) | resource |
+| [aws_cognito_identity_pool_roles_attachment.identity_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_identity_pool_roles_attachment) | resource |
+| [aws_cognito_resource_server.resource_servers](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_resource_server) | resource |
+| [aws_cognito_user.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user) | resource |
+| [aws_cognito_user_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_group) | resource |
+| [aws_cognito_user_pool.user_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool) | resource |
+| [aws_cognito_user_pool_client.client](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_client) | resource |
+| [aws_cognito_user_pool_domain.domain](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool_domain) | resource |
+| [aws_iam_role.group_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_policy_document.authenticated](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.authenticated_assume](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.trust_relationship](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.unauthenticated](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.unauthenticated_assume](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_advanced_security_mode"></a> [advanced\_security\_mode](#input\_advanced\_security\_mode) | Mode for advanced security, must be one of OFF, AUDIT or ENFORCED. | `string` | `"OFF"` | no |
+| <a name="input_alias_attributes"></a> [alias\_attributes](#input\_alias\_attributes) | Attributes supported as an alias for this user pool. Valid values: phone\_number, email, or preferred\_username. Conflicts with username\_attributes. | `list(any)` | `[]` | no |
+| <a name="input_allow_software_mfa_token"></a> [allow\_software\_mfa\_token](#input\_allow\_software\_mfa\_token) | (Optional) Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when 'sms\_configuration' is not present, the 'mfa\_configuration' argument must be set to OFF and the 'software\_token\_mfa\_configuration' configuration block must be fully removed. | `bool` | `true` | no |
+| <a name="input_allow_unauthenticated_identities"></a> [allow\_unauthenticated\_identities](#input\_allow\_unauthenticated\_identities) | Whether the identity pool supports unauthenticated logins or not. | `bool` | `false` | no |
+| <a name="input_attributes_require_verification_before_update"></a> [attributes\_require\_verification\_before\_update](#input\_attributes\_require\_verification\_before\_update) | Attributes that are required to be verified before the user is updated | `list(any)` | <pre>[<br>  "email"<br>]</pre> | no |
+| <a name="input_auto_verified_attributes"></a> [auto\_verified\_attributes](#input\_auto\_verified\_attributes) | Attributes to be auto-verified. Valid values: email, phone\_number. | `list(any)` | <pre>[<br>  "email"<br>]</pre> | no |
+| <a name="input_case_sensitive"></a> [case\_sensitive](#input\_case\_sensitive) | Whether username case sensitivity will be applied for all users in the user pool through Cognito APIs. | `bool` | `true` | no |
+| <a name="input_client_access_token_validity"></a> [client\_access\_token\_validity](#input\_client\_access\_token\_validity) | (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in 'default\_client\_token\_validity\_units'. | `number` | `null` | no |
+| <a name="input_client_allowed_oauth_flows"></a> [client\_allowed\_oauth\_flows](#input\_client\_allowed\_oauth\_flows) | (Optional) List of allowed OAuth flows. Possible flows are 'code', 'implicit', and 'client\_credentials'. | `list(string)` | `null` | no |
+| <a name="input_client_allowed_oauth_flows_user_pool_client"></a> [client\_allowed\_oauth\_flows\_user\_pool\_client](#input\_client\_allowed\_oauth\_flows\_user\_pool\_client) | (Optional) Whether the client is allowed to follow the OAuth protocol when interacting with Cognito User Pools. | `bool` | `null` | no |
+| <a name="input_client_allowed_oauth_scopes"></a> [client\_allowed\_oauth\_scopes](#input\_client\_allowed\_oauth\_scopes) | (Optional) List of allowed OAuth scopes. Possible values are 'phone', 'email', 'openid', 'profile', and 'aws.cognito.signin.user.admin'. | `list(string)` | `null` | no |
+| <a name="input_client_callback_urls"></a> [client\_callback\_urls](#input\_client\_callback\_urls) | (Optional) List of allowed callback URLs for the identity providers. | `list(string)` | `null` | no |
+| <a name="input_client_default_redirect_uri"></a> [client\_default\_redirect\_uri](#input\_client\_default\_redirect\_uri) | (Optional) The default redirect URI. Must be in the list of callback URLs. | `string` | `null` | no |
+| <a name="input_client_enable_token_revocation"></a> [client\_enable\_token\_revocation](#input\_client\_enable\_token\_revocation) | (Optional) Enables or disables token revocation. | `bool` | `null` | no |
+| <a name="input_client_explicit_auth_flows"></a> [client\_explicit\_auth\_flows](#input\_client\_explicit\_auth\_flows) | (Optional) List of authentication flows. Possible values are 'ADMIN\_NO\_SRP\_AUTH', 'CUSTOM\_AUTH\_FLOW\_ONLY', 'USER\_PASSWORD\_AUTH', 'ALLOW\_ADMIN\_USER\_PASSWORD\_AUTH', 'ALLOW\_CUSTOM\_AUTH', 'ALLOW\_USER\_PASSWORD\_AUTH', 'ALLOW\_USER\_SRP\_AUTH', and 'ALLOW\_REFRESH\_TOKEN\_AUTH'. | `list(string)` | `null` | no |
+| <a name="input_client_generate_secret"></a> [client\_generate\_secret](#input\_client\_generate\_secret) | Should an application secret be generated | `bool` | `true` | no |
+| <a name="input_client_id_token_validity"></a> [client\_id\_token\_validity](#input\_client\_id\_token\_validity) | (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in 'default\_client\_token\_validity\_units'. | `number` | `null` | no |
+| <a name="input_client_logout_urls"></a> [client\_logout\_urls](#input\_client\_logout\_urls) | (Optional) List of allowed logout URLs for the identity providers. | `list(string)` | `null` | no |
+| <a name="input_client_name"></a> [client\_name](#input\_client\_name) | The name of the application client | `string` | `null` | no |
+| <a name="input_client_prevent_user_existence_errors"></a> [client\_prevent\_user\_existence\_errors](#input\_client\_prevent\_user\_existence\_errors) | (Optional) Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the Cognito User Pool. When set to 'ENABLED' and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to 'LEGACY', those APIs will return a 'UserNotFoundException' exception if the user does not exist in the Cognito User Pool. | `string` | `null` | no |
+| <a name="input_client_read_attributes"></a> [client\_read\_attributes](#input\_client\_read\_attributes) | (Optional) List of Cognito User Pool attributes the application client can read from. | `list(string)` | <pre>[<br>  "address",<br>  "birthdate",<br>  "email",<br>  "email_verified",<br>  "family_name",<br>  "gender",<br>  "given_name",<br>  "locale",<br>  "middle_name",<br>  "name",<br>  "nickname",<br>  "phone_number",<br>  "phone_number_verified",<br>  "picture",<br>  "preferred_username",<br>  "profile",<br>  "updated_at",<br>  "website",<br>  "zoneinfo"<br>]</pre> | no |
+| <a name="input_client_refresh_token_validity"></a> [client\_refresh\_token\_validity](#input\_client\_refresh\_token\_validity) | (Optional) The time limit in days refresh tokens are valid for. | `number` | `30` | no |
+| <a name="input_client_supported_identity_providers"></a> [client\_supported\_identity\_providers](#input\_client\_supported\_identity\_providers) | (Optional) List of provider names for the identity providers that are supported on this client. | `list(string)` | `null` | no |
+| <a name="input_client_token_validity_units"></a> [client\_token\_validity\_units](#input\_client\_token\_validity\_units) | (Optional) Configuration block for units in which the validity times are represented in. | `any` | `null` | no |
+| <a name="input_client_write_attributes"></a> [client\_write\_attributes](#input\_client\_write\_attributes) | (Optional) List of Cognito User Pool attributes the application client can write to. | `list(string)` | <pre>[<br>  "address",<br>  "birthdate",<br>  "email",<br>  "family_name",<br>  "gender",<br>  "given_name",<br>  "locale",<br>  "middle_name",<br>  "name",<br>  "nickname",<br>  "phone_number",<br>  "picture",<br>  "preferred_username",<br>  "profile",<br>  "updated_at",<br>  "website",<br>  "zoneinfo"<br>]</pre> | no |
+| <a name="input_clients"></a> [clients](#input\_clients) | A container with the clients definitions | `any` | `[]` | no |
+| <a name="input_desired_delivery_mediums"></a> [desired\_delivery\_mediums](#input\_desired\_delivery\_mediums) | A list of mediums to the welcome message will be sent through. Allowed values are `EMAIL` and `SMS`. If it's provided, make sure you have also specified `email` attribute for the `EMAIL` medium and `phone_number` for the `SMS`. More than one value can be specified. | `list(string)` | <pre>[<br>  "EMAIL"<br>]</pre> | no |
+| <a name="input_domain"></a> [domain](#input\_domain) | Cognito User Pool domain | `string` | `null` | no |
+| <a name="input_domain_certificate_arn"></a> [domain\_certificate\_arn](#input\_domain\_certificate\_arn) | The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain | `string` | `null` | no |
+| <a name="input_email_message"></a> [email\_message](#input\_email\_message) | n/a | `string` | `""` | no |
+| <a name="input_email_subject"></a> [email\_subject](#input\_email\_subject) | The name of the email subject | `string` | `"Sign up for <project_name>."` | no |
+| <a name="input_enable_cognito_identity_providers"></a> [enable\_cognito\_identity\_providers](#input\_enable\_cognito\_identity\_providers) | Flag to enable or disable the creation of cognito\_identity\_providers | `bool` | n/a | yes |
+| <a name="input_enabled"></a> [enabled](#input\_enabled) | Flag to control the cognito creation. | `bool` | `true` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
+| <a name="input_label_order"></a> [label\_order](#input\_label\_order) | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
+| <a name="input_lambda_create_auth_challenge"></a> [lambda\_create\_auth\_challenge](#input\_lambda\_create\_auth\_challenge) | (Optional) The ARN of an AWS Lambda creating an authentication challenge. | `string` | `null` | no |
+| <a name="input_lambda_custom_message"></a> [lambda\_custom\_message](#input\_lambda\_custom\_message) | (Optional) The ARN of a custom message AWS Lambda trigger. | `string` | `null` | no |
+| <a name="input_lambda_define_auth_challenge"></a> [lambda\_define\_auth\_challenge](#input\_lambda\_define\_auth\_challenge) | (Optional) The ARN of an AWS Lambda that defines the authentication challenge. | `string` | `null` | no |
+| <a name="input_lambda_post_authentication"></a> [lambda\_post\_authentication](#input\_lambda\_post\_authentication) | (Optional) The ARN of a post-authentication AWS Lambda trigger. | `string` | `null` | no |
+| <a name="input_lambda_post_confirmation"></a> [lambda\_post\_confirmation](#input\_lambda\_post\_confirmation) | (Optional) The ARN of a post-confirmation AWS Lambda trigger. | `string` | `null` | no |
+| <a name="input_lambda_pre_authentication"></a> [lambda\_pre\_authentication](#input\_lambda\_pre\_authentication) | (Optional) The ARN of a pre-authentication AWS Lambda trigger. | `string` | `null` | no |
+| <a name="input_lambda_pre_sign_up"></a> [lambda\_pre\_sign\_up](#input\_lambda\_pre\_sign\_up) | (Optional) The ARN of a pre-registration AWS Lambda trigger. | `string` | `null` | no |
+| <a name="input_lambda_pre_token_generation"></a> [lambda\_pre\_token\_generation](#input\_lambda\_pre\_token\_generation) | (Optional) The ARN of an AWS Lambda that allows customization of identity token claims before token generation. | `string` | `null` | no |
+| <a name="input_lambda_user_migration"></a> [lambda\_user\_migration](#input\_lambda\_user\_migration) | (Optional) The ARN of the user migration AWS Lambda config type. | `string` | `null` | no |
+| <a name="input_lambda_verify_auth_challenge_response"></a> [lambda\_verify\_auth\_challenge\_response](#input\_lambda\_verify\_auth\_challenge\_response) | (Optional) The ARN of an AWS Lambda that verifies the authentication challenge response. | `string` | `null` | no |
+| <a name="input_managedby"></a> [managedby](#input\_managedby) | ManagedBy, eg 'CloudDrove' | `string` | `"Tearraform"` | no |
+| <a name="input_mfa_configuration"></a> [mfa\_configuration](#input\_mfa\_configuration) | Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of OFF. Valid values are OFF, ON and OPTIONAL. | `string` | `"OFF"` | no |
+| <a name="input_minimum_length"></a> [minimum\_length](#input\_minimum\_length) | (Optional) The minimum length of the password policy that you have set. | `number` | `12` | no |
+| <a name="input_module_depends_on"></a> [module\_depends\_on](#input\_module\_depends\_on) | (Optional) A list of external resources the module depends\_on. | `any` | `[]` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| <a name="input_repository"></a> [repository](#input\_repository) | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-aws-cognito"` | no |
+| <a name="input_require_lowercase"></a> [require\_lowercase](#input\_require\_lowercase) | (Optional) Whether you have required users to use at least one lowercase letter in their password. | `bool` | `true` | no |
+| <a name="input_require_numbers"></a> [require\_numbers](#input\_require\_numbers) | Whether you have required users to use at least one number in their password. | `bool` | `true` | no |
+| <a name="input_require_symbols"></a> [require\_symbols](#input\_require\_symbols) | Whether you have required users to use at least one symbol in their password. | `bool` | `true` | no |
+| <a name="input_require_uppercase"></a> [require\_uppercase](#input\_require\_uppercase) | Whether you have required users to use at least one uppercase letter in their password. | `bool` | `true` | no |
+| <a name="input_resource_servers"></a> [resource\_servers](#input\_resource\_servers) | A list of Resource Server configuration. | `list(any)` | `[]` | no |
+| <a name="input_schema_attributes"></a> [schema\_attributes](#input\_schema\_attributes) | (Optional) A list of schema attributes of a user pool. You can add a maximum of 25 custom attributes. | `any` | `[]` | no |
+| <a name="input_sms_authentication_message"></a> [sms\_authentication\_message](#input\_sms\_authentication\_message) | String representing the SMS authentication message. The Message must contain the {####} placeholder, which will be replaced with the code. | `string` | `"Your username is {username}. Sign up at {####}"` | no |
+| <a name="input_temporary_password_validity_days"></a> [temporary\_password\_validity\_days](#input\_temporary\_password\_validity\_days) | (Optional) In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator. | `number` | `1` | no |
+| <a name="input_user_group_description"></a> [user\_group\_description](#input\_user\_group\_description) | The description of the user group | `string` | `null` | no |
+| <a name="input_user_group_name"></a> [user\_group\_name](#input\_user\_group\_name) | The name of the user group | `string` | `null` | no |
+| <a name="input_user_group_precedence"></a> [user\_group\_precedence](#input\_user\_group\_precedence) | The precedence of the user group | `number` | `null` | no |
+| <a name="input_user_groups"></a> [user\_groups](#input\_user\_groups) | A container with the user\_groups definitions | `list(any)` | `[]` | no |
+| <a name="input_username_attributes"></a> [username\_attributes](#input\_username\_attributes) | Whether email addresses or phone numbers can be specified as usernames when a user signs up. Conflicts with alias\_attributes. | `list(any)` | `[]` | no |
+| <a name="input_users"></a> [users](#input\_users) | Dynamic list of Cognito Users to create (email) | <pre>map(<br>    object({<br>      email    = string<br>      username = string # unique, non-email identifier<br>    })<br>  )</pre> | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_app_client_id"></a> [app\_client\_id](#output\_app\_client\_id) | ID of the user pool client. |
+| <a name="output_identity_pool_id"></a> [identity\_pool\_id](#output\_identity\_pool\_id) | (Optional) The Cognito Identity Pool to use when configuring OAuth2.0. |
+| <a name="output_name"></a> [name](#output\_name) | (Required) Name of the application client. |
+| <a name="output_tags"></a> [tags](#output\_tags) | A mapping of tags to assign to the resource. |
+| <a name="output_user_pool_endpoint"></a> [user\_pool\_endpoint](#output\_user\_pool\_endpoint) | (Required) Endpoint of the user pool. |
+| <a name="output_user_pool_id"></a> [user\_pool\_id](#output\_user\_pool\_id) | (Required) User pool the client belongs to. |
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

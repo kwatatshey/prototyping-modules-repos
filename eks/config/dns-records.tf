@@ -11,7 +11,7 @@ resource "aws_acm_certificate" "eks_domain_cert" {
   validation_method         = "DNS"
 
   tags = {
-    Name = "${var.dns_base_domain}"
+    Name = var.dns_base_domain
   }
 }
 resource "aws_route53_record" "eks_domain_cert_validation_dns" {

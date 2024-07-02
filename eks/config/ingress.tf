@@ -27,9 +27,9 @@ resource "kubernetes_secret" "load_balancer_controller" {
 
   metadata {
     namespace     = "argocd"
-    generate_name = "${kubernetes_service_account.load_balancer_controller.metadata.0.name}-token"
+    generate_name = "${kubernetes_service_account.load_balancer_controller.metadata[0].name}-token"
     annotations = {
-      "kubernetes.io/service-account.name" = kubernetes_service_account.load_balancer_controller.metadata.0.name
+      "kubernetes.io/service-account.name" = kubernetes_service_account.load_balancer_controller.metadata[0].name
     }
   }
   depends_on = [kubernetes_service_account.load_balancer_controller]
@@ -47,7 +47,7 @@ resource "helm_release" "ingress_gateway" {
   }
   set {
     name  = "serviceAccount.name"
-    value = kubernetes_service_account.load_balancer_controller.metadata.0.name
+    value = kubernetes_service_account.load_balancer_controller.metadata[0].name
   }
 
   set {
@@ -106,7 +106,7 @@ metadata:
       [{"field":"http-header","httpHeaderConfig":{"httpHeaderName": "Content-Type", "values":["application/grpc"]}}]
     # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
 spec:
-  ingressClassName: "${kubernetes_ingress_class.argocd.metadata.0.name}" 
+  ingressClassName: "${kubernetes_ingress_class.argocd.metadata[0].name}"
   rules:
   - host: "argocd.${var.environment}.${var.dns_base_domain}"
     http:

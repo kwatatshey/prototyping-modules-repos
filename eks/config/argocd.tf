@@ -278,8 +278,8 @@ resource "null_resource" "delete_argocd_pods" {
   depends_on = [kubectl_manifest.argo_sgp]
 }
 
-# Now we add the repository where the argo config lies - 
-# only needed because it is private. In this way, we have a repo 
+# Now we add the repository where the argo config lies -
+# only needed because it is private. In this way, we have a repo
 # dedicated to argo config and everybody can file PRs to it.
 # NOTE: ArgoCD Repository is defined as a Kubernetes secret - don't be confused by that
 resource "kubernetes_secret_v1" "argo_config_repo" {

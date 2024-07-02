@@ -1,4 +1,4 @@
-applications: 
+applications:
 - name: root-helm-app
   namespace: argocd
   finalizers:
@@ -39,7 +39,7 @@ applications:
 #     }
 #     spec = {
 #       destination = {
-#         # This parameter should be changed in case applications should be 
+#         # This parameter should be changed in case applications should be
 #         # deployed to an external cluster.
 #         # External clusters need to be registered beforehand
 #         server = "https://kubernetes.default.svc"

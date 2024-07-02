@@ -36,15 +36,15 @@ kubectl get secret argoproj-ssh-creds -n argocd -o jsonpath='{.data.sshPrivateKe
 ```
 
 
-Make sure you pub key is added to github account and private 
-This is how it appears in github 
+Make sure you pub key is added to github account and private
+This is how it appears in github
 
 pub-argocd-ssh-creds
 SHA256:2cgblhZ/GMD9L+rbeWq3BtfNDtmDTKGZGngerf3TU5E
 
-and in local 
+and in local
 
-➜  ~ cd .ssh 
+➜  ~ cd .ssh
 ➜  .ssh ls
 config                  gitlab_private.pub      {bitbucket_private}
 github_private          id_rsa                  {bitbucket_private}.pub
@@ -54,7 +54,7 @@ gitlab.pub              known_hosts.bak
 gitlab_private          known_hosts.old
 ➜  .ssh cat github_private.pub
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILNsEQsnS+Xsvuj8MMyG9vbq25aghabCyDMMFImvOGXY gauthier.kwatatshey@gmail.com
-➜  .ssh 
+➜  .ssh
 
 github_private  = This is a private key
-github_private.pub = This is a public key to be added in github account 
+github_private.pub = This is a public key to be added in github account

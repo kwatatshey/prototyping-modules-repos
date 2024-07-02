@@ -305,7 +305,7 @@ resource "aws_cognito_user_pool_client" "client" {
 
   # token_validity_units
   dynamic "token_validity_units" {
-    for_each = length(lookup(element(local.clients, count.index), "token_validity_units", {})) == 0 ? [] : [lookup(element(local.clients, count.index), "token_validity_units")]
+    for_each = length(lookup(element(local.clients, count.index), "token_validity_units", {})) == 0 ? [] : [element(local.clients, count.index)["token_validity_units"]]
     content {
       access_token  = lookup(token_validity_units.value, "access_token", null)
       id_token      = lookup(token_validity_units.value, "id_token", null)
@@ -403,9 +403,9 @@ locals {
 # --------------------------------------------------------------------------
 resource "aws_cognito_user_group" "main" {
   count       = var.enabled ? length(local.groups) : 0
-  name        = lookup(element(local.groups, count.index), "name")
-  description = lookup(element(local.groups, count.index), "description")
-  precedence  = lookup(element(local.groups, count.index), "precedence")
+  name        = element(local.groups, count.index)["name"]
+  description = element(local.groups, count.index)["description"]
+  precedence  = element(local.groups, count.index)["precedence"]
   # The creation is part of the module if not then you parse an existing role_arn
   # If existing then # role_arn     = lookup(element(local.groups, count.index), "role_arn")
   # role_arn     = lookup(element(local.groups, count.index), "role_arn")
@@ -501,15 +501,15 @@ locals {
 
 resource "aws_cognito_resource_server" "resource_servers" {
   count      = var.enabled ? length(local.resource_servers) : 0
-  name       = lookup(element(local.resource_servers, count.index), "name")
-  identifier = lookup(element(local.resource_servers, count.index), "identifier")
+  name       = element(local.resource_servers, count.index)["name"]
+  identifier = element(local.resource_servers, count.index)["identifier"]
 
   #scope
   dynamic "scope" {
-    for_each = lookup(element(local.resource_servers, count.index), "scope")
+    for_each = element(local.resource_servers, count.index)["scope"]
     content {
-      scope_name        = lookup(scope.value, "scope_name")
-      scope_description = lookup(scope.value, "scope_description")
+      scope_name        = scope.value["scope_name"]
+      scope_description = scope.value["scope_description"]
     }
   }
 
@@ -517,7 +517,7 @@ resource "aws_cognito_resource_server" "resource_servers" {
 }
 
 
-# To correct this later 
+# To correct this later
 # resource "aws_cognito_user_in_group" "example" {
 #   count        = var.enable_cognito_user_in_group ? 1 : 0
 #   user_pool_id = var.enable_cognito_user_in_group ? aws_cognito_user_pool.user_pool[0].id : null

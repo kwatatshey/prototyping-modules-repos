@@ -23,7 +23,6 @@ module "ebs_kms_key" {
 }
 
 data "aws_caller_identity" "current" {}
-data "aws_availability_zones" "available" {}
 locals {
   tags = {
     GithubRepo = "terraform-aws-eks"

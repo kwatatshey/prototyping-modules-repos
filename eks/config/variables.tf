@@ -53,30 +53,6 @@ variable "spot_termination_handler_chart_namespace" {
   description = "Kubernetes namespace to deploy EKS Spot termination handler Helm chart."
 }
 
-# create some variables
-variable "external_dns_iam_role" {
-  type        = string
-  description = "IAM Role Name associated with external-dns service."
-}
-variable "external_dns_chart_name" {
-  type        = string
-  description = "Chart Name associated with external-dns service."
-}
-
-variable "external_dns_chart_repo" {
-  type        = string
-  description = "Chart Repo associated with external-dns service."
-}
-
-variable "external_dns_chart_version" {
-  type        = string
-  description = "Chart Repo associated with external-dns service."
-}
-
-variable "external_dns_values" {
-  type        = map(string)
-  description = "Values map required by external-dns service."
-}
 
 variable "admin_roles" {
   type        = list(string)
@@ -128,11 +104,6 @@ variable "ingress_gateway_chart_version" {
 
 
 
-# create some variables
-variable "namespaces" {
-  type        = list(string)
-  description = "List of namespaces to be created in our EKS Cluster."
-}
 
 
 variable "vpc_id" {
@@ -163,11 +134,6 @@ variable "EKS_CLUSTER_SECURITY_GROUP_ID" {
   description = "The ID of the EKS cluster security group"
 }
 
-variable "argocd_subdomain" {
-  description = "ArgoCD subdomain"
-  type        = string
-}
-
 variable "argocd_ingress_name" {
   description = "ArgoCD ingress"
   type        = string
@@ -189,26 +155,9 @@ variable "cluster_version" {
   type        = string
 }
 
-variable "managed_prometheus_workspace_id" {
-  description = "Amazon Managed Service for Prometheus Workspace ID"
-  type        = string
-  default     = ""
-}
-
-variable "managed_grafana_workspace_id" {
-  description = "Amazon Managed Grafana Workspace ID"
-  type        = string
-  default     = "g-a4b83b66e9"
-}
-
 # variable "grafana_api_key" {
 #   description = "API key for authorizing the Grafana provider to make changes to Amazon Managed Grafana"
 #   type        = string
 #   sensitive   = true
 # }
 
-variable "enable_dashboards" {
-  description = "Enables or disables curated dashboards. Dashboards are managed by the Grafana Operator"
-  type        = bool
-  default     = true
-}

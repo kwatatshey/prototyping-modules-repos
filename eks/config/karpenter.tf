@@ -4,7 +4,6 @@ provider "aws" {
 }
 
 
-data "aws_availability_zones" "available" {}
 data "aws_ecrpublic_authorization_token" "token" {
   provider = aws.virginia
 }
@@ -185,7 +184,6 @@ data "aws_ssm_parameter" "gpu_ami_id" {
 
 locals {
   private = "private"
-  public  = "public"
 }
 
 ###/////////////////////////////////////////////////////////////////////////////////////
@@ -230,7 +228,7 @@ resource "kubectl_manifest" "karpenter_spot_pool" {
           # - key: spot
           #   value: "true"
           #   effect: NoSchedule
-          kubelet:         
+          kubelet:
             evictionHard:
               memory.available: 500Mi
               nodefs.available: 10%
@@ -299,7 +297,7 @@ resource "kubectl_manifest" "karpenter_on_demand_pool" {
           # - key: on-demand
           #   value: "true"
           #   effect: NoSchedule
-          kubelet:         
+          kubelet:
             evictionHard:
               memory.available: 500Mi
               nodefs.available: 10%
@@ -362,7 +360,7 @@ resource "kubectl_manifest" "karpenter_on_demand_monitoring_pool" {
           # - key: monitoring
           #   value: "true"
           #   effect: NoSchedule
-          kubelet:         
+          kubelet:
             evictionHard:
               memory.available: 500Mi
               nodefs.available: 10%
@@ -433,7 +431,7 @@ resource "kubectl_manifest" "karpenter_node_class" {
         - id: "${join(",", var.security_groups)}"
 
       userData: |
-        echo "Hello world"   
+        echo "Hello world"
       associatePublicIPAddress: true
 
       amiSelectorTerms:
