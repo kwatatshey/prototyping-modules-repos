@@ -1,6 +1,6 @@
 # prototyping-modules-repos
 
-This repository contains all the Terraform modules used by to prototype anything 
+This repository contains all the Terraform modules used by to prototype anything
 
 ## Requirements
 
