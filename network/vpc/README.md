@@ -3,13 +3,16 @@
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.8.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.41.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.41.0 |
 
 ## Modules
 
@@ -21,8 +24,8 @@ No requirements.
 
 | Name | Type |
 |------|------|
-| [aws_eip.nat_gw_elastic_ip](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
-| [aws_availability_zones.available_azs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| [aws_eip.nat_gw_elastic_ip](https://registry.terraform.io/providers/hashicorp/aws/5.41.0/docs/resources/eip) | resource |
+| [aws_availability_zones.available_azs](https://registry.terraform.io/providers/hashicorp/aws/5.41.0/docs/data-sources/availability_zones) | data source |
 
 ## Inputs
 

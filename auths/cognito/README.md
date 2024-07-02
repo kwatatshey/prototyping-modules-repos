@@ -323,7 +323,7 @@ https://github.com/clouddrove/terraform-aws-cognito.git<!-- BEGINNING OF PRE-COM
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.6 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.1 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.31.0 |
 
 ## Providers

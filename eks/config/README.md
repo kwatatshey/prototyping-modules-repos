@@ -106,8 +106,8 @@ https://kyverno.io/policies/?policytypes=Karpenter<!-- BEGINNING OF PRE-COMMIT-T
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ALB_SECURITY_GROUP_ID"></a> [ALB\_SECURITY\_GROUP\_ID](#input\_ALB\_SECURITY\_GROUP\_ID) | The ID of the ALB security group | `any` | n/a | yes |
-| <a name="input_EKS_CLUSTER_SECURITY_GROUP_ID"></a> [EKS\_CLUSTER\_SECURITY\_GROUP\_ID](#input\_EKS\_CLUSTER\_SECURITY\_GROUP\_ID) | The ID of the EKS cluster security group | `any` | n/a | yes |
+| <a name="input_ALB_SECURITY_GROUP_ID"></a> [ALB\_SECURITY\_GROUP\_ID](#input\_ALB\_SECURITY\_GROUP\_ID) | The ID of the ALB security group | `string` | n/a | yes |
+| <a name="input_EKS_CLUSTER_SECURITY_GROUP_ID"></a> [EKS\_CLUSTER\_SECURITY\_GROUP\_ID](#input\_EKS\_CLUSTER\_SECURITY\_GROUP\_ID) | The ID of the EKS cluster security group | `string` | n/a | yes |
 | <a name="input_admin_roles"></a> [admin\_roles](#input\_admin\_roles) | List of Kubernetes admin roles. | `list(string)` | n/a | yes |
 | <a name="input_app_name"></a> [app\_name](#input\_app\_name) | Name of the application. | `string` | n/a | yes |
 | <a name="input_argocd_ingress_alb_name"></a> [argocd\_ingress\_alb\_name](#input\_argocd\_ingress\_alb\_name) | The name of the ALB | `string` | n/a | yes |

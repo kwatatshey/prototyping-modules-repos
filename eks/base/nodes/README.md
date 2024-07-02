@@ -3,13 +3,16 @@
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.8.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.41.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.41.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
@@ -23,9 +26,9 @@ No requirements.
 
 | Name | Type |
 |------|------|
-| [aws_autoscaling_policy.eks_autoscaling_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy) | resource |
+| [aws_autoscaling_policy.eks_autoscaling_policy](https://registry.terraform.io/providers/hashicorp/aws/5.41.0/docs/resources/autoscaling_policy) | resource |
 | [random_id.additional_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
-| [aws_iam_policy_document.additional_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.additional_policy](https://registry.terraform.io/providers/hashicorp/aws/5.41.0/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
