@@ -42,7 +42,7 @@
 | <a name="input_developer_users"></a> [developer\_users](#input\_developer\_users) | List of Kubernetes developers. | `list(string)` | n/a | yes |
 | <a name="input_enable_creation_role_with_oidc"></a> [enable\_creation\_role\_with\_oidc](#input\_enable\_creation\_role\_with\_oidc) | Enable creation of IAM roles with OIDC. | `bool` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name. | `string` | n/a | yes |
-| <a name="input_oic_role_configurations"></a> [oic\_role\_configurations](#input\_oic\_role\_configurations) | n/a | <pre>map(object({<br>    role_name           = string<br>    assume_role_actions = list(string)<br>    namespace           = string<br>    service_account     = string<br>    policy_file         = string<br>  }))</pre> | n/a | yes |
+| <a name="input_oic_role_configurations"></a> [oic\_role\_configurations](#input\_oic\_role\_configurations) | values for the OIDC role configurations. | <pre>map(object({<br>    role_name           = string<br>    assume_role_actions = list(string)<br>    namespace           = string<br>    service_account     = string<br>    policy_file         = string<br>  }))</pre> | n/a | yes |
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix to be used on each infrastructure object Name created in AWS. | `string` | n/a | yes |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | n/a | `any` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | n/a | `any` | n/a | yes |

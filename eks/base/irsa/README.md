@@ -34,11 +34,11 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app_name"></a> [app\_name](#input\_app\_name) | Name of the application. | `string` | n/a | yes |
-| <a name="input_autoscaller_cluster_name"></a> [autoscaller\_cluster\_name](#input\_autoscaller\_cluster\_name) | n/a | `any` | n/a | yes |
-| <a name="input_environment"></a> [environment](#input\_environment) | The environment name | `any` | n/a | yes |
-| <a name="input_irsa-role-name"></a> [irsa-role-name](#input\_irsa-role-name) | n/a | `any` | n/a | yes |
-| <a name="input_oidc_provider_arn"></a> [oidc\_provider\_arn](#input\_oidc\_provider\_arn) | n/a | `any` | n/a | yes |
-| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | The prefix to be used on all resources | `any` | n/a | yes |
+| <a name="input_autoscaller_cluster_name"></a> [autoscaller\_cluster\_name](#input\_autoscaller\_cluster\_name) | The name of the EKS cluster. | `string` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | The environment name | `string` | n/a | yes |
+| <a name="input_irsa-role-name"></a> [irsa-role-name](#input\_irsa-role-name) | The name of the IAM role to be created. | `string` | n/a | yes |
+| <a name="input_oidc_provider_arn"></a> [oidc\_provider\_arn](#input\_oidc\_provider\_arn) | The ARN of the OIDC Identity Provider. | `string` | n/a | yes |
+| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | The prefix to be used on all resources | `string` | n/a | yes |
 
 ## Outputs
 

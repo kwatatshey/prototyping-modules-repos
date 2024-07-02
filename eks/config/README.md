@@ -92,7 +92,6 @@ https://kyverno.io/policies/?policytypes=Karpenter<!-- BEGINNING OF PRE-COMMIT-T
 | [null_resource.delete_argocd_pods](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.update_argocd_ingress](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [time_sleep.wait](https://registry.terraform.io/providers/hashicorp/time/0.9.1/docs/resources/sleep) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_ecrpublic_authorization_token.token](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecrpublic_authorization_token) | data source |
 | [aws_iam_policy_document.bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -113,7 +112,6 @@ https://kyverno.io/policies/?policytypes=Karpenter<!-- BEGINNING OF PRE-COMMIT-T
 | <a name="input_app_name"></a> [app\_name](#input\_app\_name) | Name of the application. | `string` | n/a | yes |
 | <a name="input_argocd_ingress_alb_name"></a> [argocd\_ingress\_alb\_name](#input\_argocd\_ingress\_alb\_name) | The name of the ALB | `string` | n/a | yes |
 | <a name="input_argocd_ingress_name"></a> [argocd\_ingress\_name](#input\_argocd\_ingress\_name) | ArgoCD ingress | `string` | n/a | yes |
-| <a name="input_argocd_subdomain"></a> [argocd\_subdomain](#input\_argocd\_subdomain) | ArgoCD subdomain | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region. | `string` | `"us-east-1"` | no |
 | <a name="input_cluster_arn"></a> [cluster\_arn](#input\_cluster\_arn) | Amazon Resource Name (ARN) of the cluster. | `string` | n/a | yes |
 | <a name="input_cluster_certificate_authority_data"></a> [cluster\_certificate\_authority\_data](#input\_cluster\_certificate\_authority\_data) | Base64 encoded certificate data required to communicate with the cluster. | `string` | n/a | yes |
@@ -124,21 +122,12 @@ https://kyverno.io/policies/?policytypes=Karpenter<!-- BEGINNING OF PRE-COMMIT-T
 | <a name="input_developer_user_group"></a> [developer\_user\_group](#input\_developer\_user\_group) | Name of the kube group for developers. | `string` | n/a | yes |
 | <a name="input_developer_users"></a> [developer\_users](#input\_developer\_users) | List of Kubernetes developers. | `list(string)` | n/a | yes |
 | <a name="input_dns_base_domain"></a> [dns\_base\_domain](#input\_dns\_base\_domain) | DNS Zone name to be used from EKS Ingress. | `string` | n/a | yes |
-| <a name="input_enable_dashboards"></a> [enable\_dashboards](#input\_enable\_dashboards) | Enables or disables curated dashboards. Dashboards are managed by the Grafana Operator | `bool` | `true` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name. | `string` | n/a | yes |
-| <a name="input_external_dns_chart_name"></a> [external\_dns\_chart\_name](#input\_external\_dns\_chart\_name) | Chart Name associated with external-dns service. | `string` | n/a | yes |
-| <a name="input_external_dns_chart_repo"></a> [external\_dns\_chart\_repo](#input\_external\_dns\_chart\_repo) | Chart Repo associated with external-dns service. | `string` | n/a | yes |
-| <a name="input_external_dns_chart_version"></a> [external\_dns\_chart\_version](#input\_external\_dns\_chart\_version) | Chart Repo associated with external-dns service. | `string` | n/a | yes |
-| <a name="input_external_dns_iam_role"></a> [external\_dns\_iam\_role](#input\_external\_dns\_iam\_role) | IAM Role Name associated with external-dns service. | `string` | n/a | yes |
-| <a name="input_external_dns_values"></a> [external\_dns\_values](#input\_external\_dns\_values) | Values map required by external-dns service. | `map(string)` | n/a | yes |
 | <a name="input_ingress_gateway_chart_name"></a> [ingress\_gateway\_chart\_name](#input\_ingress\_gateway\_chart\_name) | Ingress Gateway Helm chart name. | `string` | n/a | yes |
 | <a name="input_ingress_gateway_chart_repo"></a> [ingress\_gateway\_chart\_repo](#input\_ingress\_gateway\_chart\_repo) | Ingress Gateway Helm repository name. | `string` | n/a | yes |
 | <a name="input_ingress_gateway_chart_version"></a> [ingress\_gateway\_chart\_version](#input\_ingress\_gateway\_chart\_version) | Ingress Gateway Helm chart version. | `string` | n/a | yes |
 | <a name="input_ingress_gateway_iam_role"></a> [ingress\_gateway\_iam\_role](#input\_ingress\_gateway\_iam\_role) | IAM Role Name associated with load-balancer service. | `string` | n/a | yes |
 | <a name="input_ingress_gateway_name"></a> [ingress\_gateway\_name](#input\_ingress\_gateway\_name) | Load-balancer service name. | `string` | n/a | yes |
-| <a name="input_managed_grafana_workspace_id"></a> [managed\_grafana\_workspace\_id](#input\_managed\_grafana\_workspace\_id) | Amazon Managed Grafana Workspace ID | `string` | `"g-a4b83b66e9"` | no |
-| <a name="input_managed_prometheus_workspace_id"></a> [managed\_prometheus\_workspace\_id](#input\_managed\_prometheus\_workspace\_id) | Amazon Managed Service for Prometheus Workspace ID | `string` | `""` | no |
-| <a name="input_namespaces"></a> [namespaces](#input\_namespaces) | List of namespaces to be created in our EKS Cluster. | `list(string)` | n/a | yes |
 | <a name="input_oidc_provider_arn"></a> [oidc\_provider\_arn](#input\_oidc\_provider\_arn) | The ARN of the OIDC provider for the EKS cluster | `string` | n/a | yes |
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | The IDs of the private subnets | `list(string)` | n/a | yes |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | The IDs of the public subnets | `list(string)` | n/a | yes |

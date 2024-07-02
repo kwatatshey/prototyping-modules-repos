@@ -31,28 +31,27 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ami_type"></a> [ami\_type](#input\_ami\_type) | n/a | `any` | n/a | yes |
+| <a name="input_ami_type"></a> [ami\_type](#input\_ami\_type) | The type of AMI to use for the EKS managed node group. | `string` | n/a | yes |
 | <a name="input_app_name"></a> [app\_name](#input\_app\_name) | Name of the application. | `string` | n/a | yes |
 | <a name="input_autoscaling_average_cpu"></a> [autoscaling\_average\_cpu](#input\_autoscaling\_average\_cpu) | Average CPU threshold to autoscale EKS EC2 instances. | `number` | n/a | yes |
-| <a name="input_capacity_type"></a> [capacity\_type](#input\_capacity\_type) | n/a | `any` | n/a | yes |
+| <a name="input_capacity_type"></a> [capacity\_type](#input\_capacity\_type) | Capacity type for the EKS managed node group. | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | EKS cluster name. | `string` | n/a | yes |
 | <a name="input_cluster_primary_security_group_id"></a> [cluster\_primary\_security\_group\_id](#input\_cluster\_primary\_security\_group\_id) | Cluster security group that was created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication. Referred to as 'Cluster security group' in the EKS console | `string` | n/a | yes |
 | <a name="input_cluster_service_cidr"></a> [cluster\_service\_cidr](#input\_cluster\_service\_cidr) | CIDR block for the EKS cluster service. | `string` | n/a | yes |
-| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | n/a | `any` | n/a | yes |
-| <a name="input_desired_size"></a> [desired\_size](#input\_desired\_size) | n/a | `any` | n/a | yes |
-| <a name="input_ebs_kms_key_arn"></a> [ebs\_kms\_key\_arn](#input\_ebs\_kms\_key\_arn) | n/a | `any` | n/a | yes |
-| <a name="input_eks_managed_node_groups"></a> [eks\_managed\_node\_groups](#input\_eks\_managed\_node\_groups) | n/a | `any` | n/a | yes |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | The Kubernetes server version for the EKS cluster. | `string` | n/a | yes |
+| <a name="input_desired_size"></a> [desired\_size](#input\_desired\_size) | Desired number of nodes in the EKS managed node group. | `number` | n/a | yes |
+| <a name="input_ebs_kms_key_arn"></a> [ebs\_kms\_key\_arn](#input\_ebs\_kms\_key\_arn) | The ARN of the KMS key to use for EBS encryption. | `string` | n/a | yes |
+| <a name="input_eks_managed_node_groups"></a> [eks\_managed\_node\_groups](#input\_eks\_managed\_node\_groups) | values for the EKS managed node groups. | <pre>map(object({<br>    ami_type       = string<br>    min_size       = number<br>    max_size       = number<br>    desired_size   = number<br>    instance_types = list(string)<br>    # tags           = optional(map(string), {}) # Default to an empty map<br>    capacity_type = string<br>    # use_custom_launch_template = bool<br>    # disk_size                  = number<br>    network_interfaces = list(object({<br>      delete_on_termination       = bool<br>      associate_public_ip_address = bool<br>    }))<br>  }))</pre> | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name. | `string` | n/a | yes |
 | <a name="input_iam_role_nodes_additional_policies"></a> [iam\_role\_nodes\_additional\_policies](#input\_iam\_role\_nodes\_additional\_policies) | List of additional IAM policies to attach to EKS managed node groups. | `map(string)` | n/a | yes |
-| <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | n/a | `any` | n/a | yes |
-| <a name="input_max_size"></a> [max\_size](#input\_max\_size) | n/a | `any` | n/a | yes |
-| <a name="input_min_size"></a> [min\_size](#input\_min\_size) | n/a | `any` | n/a | yes |
-| <a name="input_name"></a> [name](#input\_name) | n/a | `any` | n/a | yes |
-| <a name="input_network_interfaces"></a> [network\_interfaces](#input\_network\_interfaces) | variable "use\_custom\_launch\_template" {} variable "disk\_size" {} | `any` | n/a | yes |
+| <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | List of instance types to use for the EKS managed node group. | `list(string)` | n/a | yes |
+| <a name="input_max_size"></a> [max\_size](#input\_max\_size) | Maximum number of nodes in the EKS managed node group. | `number` | n/a | yes |
+| <a name="input_min_size"></a> [min\_size](#input\_min\_size) | Minimum number of nodes in the EKS managed node group. | `number` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | The name of the security group | `string` | n/a | yes |
+| <a name="input_network_interfaces"></a> [network\_interfaces](#input\_network\_interfaces) | List of network interfaces to attach to the EKS managed node group. | <pre>list(object({<br>    associate_public_ip_address = bool<br>    delete_on_termination       = bool<br>    # description                 = string<br>    # device_index                = number<br>    # security_groups              = list(string)<br>    # subnet_id                   = string<br>  }))</pre> | n/a | yes |
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix to be used on each infrastructure object Name created in AWS. | `string` | n/a | yes |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | n/a | `any` | n/a | yes |
-| <a name="input_tag_specifications"></a> [tag\_specifications](#input\_tag\_specifications) | n/a | `any` | n/a | yes |
-| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | n/a | `any` | n/a | yes |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet IDs to launch the EKS managed node group in. | `list(string)` | n/a | yes |
+| <a name="input_tag_specifications"></a> [tag\_specifications](#input\_tag\_specifications) | List of tag specifications to apply to the EKS managed node group. | `list(string)` | n/a | yes |
 | <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | List of security group IDs to attach to the EKS cluster. | `list(string)` | n/a | yes |
 
 ## Outputs

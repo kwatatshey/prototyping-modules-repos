@@ -127,10 +127,12 @@ variable "security_groups" {
 }
 
 variable "ALB_SECURITY_GROUP_ID" {
+  type        = string
   description = "The ID of the ALB security group"
 }
 
 variable "EKS_CLUSTER_SECURITY_GROUP_ID" {
+  type        = string
   description = "The ID of the EKS cluster security group"
 }
 

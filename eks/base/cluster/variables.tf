@@ -20,8 +20,14 @@ variable "cluster_name" {
   description = "EKS cluster name."
 }
 
-variable "vpc_id" {}
-variable "subnet_ids" {}
+variable "vpc_id" {
+  type        = string
+  description = "VPC ID of the EKS cluster."
+}
+variable "subnet_ids" {
+  type        = list(string)
+  description = "List of subnet IDs for the EKS cluster."
+}
 
 
 variable "developer_roles" {
