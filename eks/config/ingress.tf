@@ -134,7 +134,6 @@ spec:
   ]
 }
 
-
 module "s3_bucket" {
   source                                     = "terraform-aws-modules/s3-bucket/aws"
   create_bucket                              = true
@@ -152,7 +151,6 @@ module "s3_bucket" {
     enabled = true
   }
 }
-
 
 data "aws_iam_policy_document" "bucket_policy" {
   statement {
