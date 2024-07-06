@@ -90,7 +90,7 @@ metadata:
   name: ${var.argocd_ingress_name}
   namespace: argocd
   annotations:
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}, {"HTTP": 8080}, {"HTTPS": 8443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTP": 8080}]'
     alb.ingress.kubernetes.io/success-codes: 200-399
     alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=60
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600,access_logs.s3.enabled=true,access_logs.s3.bucket=${module.s3_bucket.s3_bucket_id},access_logs.s3.prefix=argocd
@@ -98,32 +98,28 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/subnets: ${join(", ", var.public_subnets)}
-    alb.ingress.kubernetes.io/certificate-arn: ${aws_acm_certificate.eks_domain_cert.arn}
     alb.ingress.kubernetes.io/security-groups: ${join(", ", var.security_groups)}
-    alb.ingress.kubernetes.io/backend-protocol: HTTPS
-    # alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/conditions.argogrpc: |
       [{"field":"http-header","httpHeaderConfig":{"httpHeaderName": "Content-Type", "values":["application/grpc"]}}]
-    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
 spec:
   ingressClassName: "${kubernetes_ingress_class.argocd.metadata[0].name}"
   rules:
-  - host: "argocd.${var.environment}.${var.dns_base_domain}"
-    http:
+     http:
       paths:
       - path: /
         backend:
           service:
             name: argogrpc
             port:
-              number: 443
+              number: 80
         pathType: Prefix
       - path: /
         backend:
           service:
             name: argocd-server
             port:
-              number: 443
+                number: 80
         pathType: Prefix
   YAML
   depends_on = [
