@@ -164,7 +164,6 @@ resource "kubernetes_secret_v1" "argo_config_repo" {
   depends_on = [helm_release.argocd]
 }
 
-
 # Helm chart to deploy argo root application
 resource "helm_release" "argocd-app" {
   name       = "argocd-app"
