@@ -20,81 +20,110 @@ variable "vpc_id" {
 }
 
 # Define ingress rules with CIDR blocks
+# variable "ingress_with_cidr_blocks" {
+#   description = "List of ingress rules with CIDR blocks"
+#   type = list(object({
+#     from_port   = number
+#     to_port     = number
+#     protocol    = string
+#     description = string
+#     cidr_blocks = list(string)
+#   }))
+#   default = []
+# }
+
+
 variable "ingress_with_cidr_blocks" {
   description = "List of ingress rules with CIDR blocks"
-  type = list(object({
-    from_port   = number
-    to_port     = number
-    protocol    = string
-    description = string
-    cidr_blocks = list(string)
-  }))
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 # Define ingress rules with IPv6 CIDR blocks
 variable "ingress_with_ipv6_cidr_blocks" {
   description = "List of ingress rules with IPv6 CIDR blocks"
-  type = list(object({
-    from_port        = number
-    to_port          = number
-    protocol         = string
-    description      = string
-    ipv6_cidr_blocks = list(string)
-  }))
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 # Define ingress rules with source security group ID
 variable "ingress_with_source_security_group_id" {
   description = "List of ingress rules with source security group ID"
-  type = list(object({
-    from_port                = number
-    to_port                  = number
-    protocol                 = string
-    description              = string
-    source_security_group_id = string
-  }))
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 # Define ingress rules with self
 variable "ingress_with_self" {
   description = "List of ingress rules with self"
-  type = list(object({
-    from_port   = number
-    to_port     = number
-    protocol    = string
-    description = string
-  }))
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 # Define egress rules with CIDR blocks
 variable "egress_with_cidr_blocks" {
   description = "List of egress rules with CIDR blocks"
-  type = list(object({
-    from_port   = number
-    to_port     = number
-    protocol    = string
-    description = string
-    cidr_blocks = list(string)
-  }))
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 # Define egress rules with IPv6 CIDR blocks
 variable "egress_with_ipv6_cidr_blocks" {
   description = "List of egress rules with IPv6 CIDR blocks"
-  type = list(object({
-    from_port        = number
-    to_port          = number
-    protocol         = string
-    description      = string
-    ipv6_cidr_blocks = list(string)
-  }))
-  default = []
+  type        = list(string)
+  default     = []
 }
+
+# # Define ingress rules with source security group ID
+# variable "ingress_with_source_security_group_id" {
+#   description = "List of ingress rules with source security group ID"
+#   type = list(object({
+#     from_port                = number
+#     to_port                  = number
+#     protocol                 = string
+#     description              = string
+#     source_security_group_id = string
+#   }))
+#   default = []
+# }
+
+# # Define ingress rules with self
+# variable "ingress_with_self" {
+#   description = "List of ingress rules with self"
+#   type = list(object({
+#     from_port   = number
+#     to_port     = number
+#     protocol    = string
+#     description = string
+#   }))
+#   default = []
+# }
+
+# # Define egress rules with CIDR blocks
+# variable "egress_with_cidr_blocks" {
+#   description = "List of egress rules with CIDR blocks"
+#   type = list(object({
+#     from_port   = number
+#     to_port     = number
+#     protocol    = string
+#     description = string
+#     cidr_blocks = list(string)
+#   }))
+#   default = []
+# }
+
+# Define egress rules with IPv6 CIDR blocks
+# variable "egress_with_ipv6_cidr_blocks" {
+#   description = "List of egress rules with IPv6 CIDR blocks"
+#   type = list(object({
+#     from_port        = number
+#     to_port          = number
+#     protocol         = string
+#     description      = string
+#     ipv6_cidr_blocks = list(string)
+#   }))
+#   default = []
+# }
 
 # Define timeouts for resource creation and deletion
 variable "create_timeout" {
