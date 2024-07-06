@@ -51,151 +51,12 @@ resource "helm_release" "sealed_secrets" {
   wait_for_jobs = true
   depends_on    = [kubernetes_config_map_v1_data.aws_auth_users, helm_release.argocd]
 }
-resource "kubectl_manifest" "gh_private_repo_key" {
-  yaml_body  = file("${path.module}/sealed-secrets/sealed-ssh-secret.yaml")
-  depends_on = [helm_release.sealed_secrets]
-}
-
-####SSH private key for accessing the private repo
-# resource "kubectl_manifest" "argoproj_ssh_creds" {
-#   yaml_body = <<-YAML
-# apiVersion: external-secrets.io/v1beta1
-# kind: SecretStore
-# metadata:
-#   name: secretstore-argocd
-#   namespace: argocd
-# spec:
-#   provider:
-#     aws:
-#       service: SecretsManager
-#       region: us-east-1
-#       auth:
-#         jwt:
-#           serviceAccountRef:
-#             name: ${kubernetes_service_account.load_balancer_controller.metadata.0.name}
-# ---
-# apiVersion: external-secrets.io/v1beta1
-# kind: ExternalSecret
-# metadata:
-#   name: externalsecret-argocd
-#   namespace: argocd
-# spec:
-#   refreshInterval: 1h
-#   secretStoreRef:
-#     name: secretstore-argocd
-#     kind: SecretStore
-#   target:
-#     name: argoproj-ssh-creds
-#     creationPolicy: Owner
-#   dataFrom:
-#     - key: arn:aws:secretsmanager:us-east-1:955769636964:secret:sshPrivateKey-rBIF95
-#       # This is a comment about the key
-#     # - key: sshPrivateKey can also be a secret name in case the secret manager is in the same AWS account where the ArgoCD service account is
-#   template:
-#     type: Opaque
-#     metadata:
-#       labels:
-#         argocd.argoproj.io/secret-type: repo-creds
-#     stringData:
-#       url: git@github.com:kwatatshey
-#       type: git
-# YAML
-
-#   depends_on = [
-#     helm_release.argocd-app,
-#   ]
+# resource "kubectl_manifest" "gh_private_repo_key" {
+#   yaml_body  = file("${path.module}/sealed-secrets/sealed-ssh-secret.yaml")
+#   depends_on = [helm_release.sealed_secrets]
 # }
 
-# resource "kubectl_manifest" "argoproj_secretstore" {
-#   yaml_body = <<-YAML
-# apiVersion: external-secrets.io/v1beta1
-# kind: SecretStore
-# metadata:
-#   name: secretstore-argocd
-#   namespace: argocd
-# spec:
-#   provider:
-#     aws:
-#       service: SecretsManager
-#       region: us-east-1
-#       auth:
-#         jwt:
-#           serviceAccountRef:
-#             name: ${kubernetes_service_account.load_balancer_controller.metadata.0.name}
-#   YAML
 
-#   depends_on = [
-#     helm_release.argocd-app,
-#   ]
-# }
-
-# resource "kubectl_manifest" "argoproj_externalsecret" {
-#   yaml_body = <<-YAML
-# apiVersion: external-secrets.io/v1beta1
-# kind: ExternalSecret
-# metadata:
-#   name: externalsecret-argocd
-#   namespace: argocd
-# spec:
-#   refreshInterval: 1h
-#   secretStoreRef:
-#     name: secretstore-argocd
-#     kind: SecretStore
-#   target:
-#     name: argoproj-ssh-creds
-#     creationPolicy: Owner
-#   dataFrom:
-#     - key: arn:aws:secretsmanager:us-east-1:955769636964:secret:sshPrivateKey-rBIF95
-#       # This is a comment about the key
-#     # - key: sshPrivateKey can also be a secret name in case the secret manager is in the same AWS account where the ArgoCD service account is
-#   template:
-#     type: Opaque
-#     metadata:
-#       labels:
-#         argocd.argoproj.io/secret-type: repo-creds
-#     stringData:
-#       url: git@github.com:kwatatshey
-#       type: git
-#   YAML
-
-#   depends_on = [
-#     kubectl_manifest.argoproj_secretstore,
-#   ]
-# }
-
-# resource "kubectl_manifest" "dbx_mrl_tnsm_tfm_role" {
-#   yaml_body = <<-YAML
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: Role
-# metadata:
-#   namespace: argocd
-#   name: argocd-secret-role
-# rules:
-# - apiGroups: ["*"]
-#   resources: ["*"]
-#   verbs: ["*"]
-#   # You can also use ["create", "get", "update", "delete"] to restrict verbs
-# YAML
-# }
-
-# resource "kubectl_manifest" "dbx_mrl_tnsm_tfm_role_binding" {
-#   yaml_body = <<-YAML
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: RoleBinding
-# metadata:
-#   name: argocd-secret-role-binding
-#   namespace: argocd
-# subjects:
-# - kind: Group
-#   name: argocd-secret-group
-#   apiGroup: ""
-# roleRef:
-#   kind: Role
-#   name: dbx-mrl-tnsm-tfm-role
-#   apiGroup: ""
-# YAML
-# }
-######
 # data "aws_secretsmanager_secret" "ssh_private_key" {
 #   name = "sshPrivateKey"
 # }
@@ -299,9 +160,8 @@ resource "kubernetes_secret_v1" "argo_config_repo" {
     sshPrivateKey = data.aws_ssm_parameter.github_ssh_private_key.value
   }
   # depends_on = [kubernetes_config_map_v1_data.aws_auth_users] to not include, only this below
-  depends_on = [kubectl_manifest.gh_private_repo_key]
-  # depends_on = [kubectl_manifest.argoproj_ssh_creds]
-  # depends_on = [helm_release.argocd]
+  # depends_on = [kubectl_manifest.gh_private_repo_key]
+  depends_on = [helm_release.argocd]
 }
 
 
