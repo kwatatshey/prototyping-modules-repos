@@ -17,7 +17,7 @@ module "ebs_kms_key" {
   ]
 
   # Aliases
-  aliases = ["eks/alias/kms/${var.cluster_name}/ebs"]
+  aliases = ["eks/kmss/${var.cluster_name}/ebs"]
 
   tags = local.tags
 }
