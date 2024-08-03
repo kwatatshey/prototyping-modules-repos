@@ -105,16 +105,16 @@ metadata:
 spec:
   ingressClassName: "${kubernetes_ingress_class.argocd.metadata[0].name}"
   rules:
-     http:
+  - http:
       paths:
-      - path: /
+      - path: /argogrpc
         backend:
           service:
             name: argogrpc
             port:
               number: 80
         pathType: Prefix
-      - path: /
+      - path: /argocd-server
         backend:
           service:
             name: argocd-server
