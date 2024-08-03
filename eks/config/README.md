@@ -114,6 +114,7 @@ https://kyverno.io/policies/?policytypes=Karpenter<!-- BEGINNING OF PRE-COMMIT-T
 | <a name="input_cluster_endpoint"></a> [cluster\_endpoint](#input\_cluster\_endpoint) | Endpoint for your Kubernetes API server. | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | EKS cluster name. | `string` | n/a | yes |
 | <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | The Kubernetes version for the EKS cluster | `string` | n/a | yes |
+| <a name="input_cross_account_admin_roles"></a> [cross\_account\_admin\_roles](#input\_cross\_account\_admin\_roles) | The ARN of the cross account admin role | `list(string)` | n/a | yes |
 | <a name="input_developer_roles"></a> [developer\_roles](#input\_developer\_roles) | List of Kubernetes developer roles. | `list(string)` | n/a | yes |
 | <a name="input_developer_user_group"></a> [developer\_user\_group](#input\_developer\_user\_group) | Name of the kube group for developers. | `string` | n/a | yes |
 | <a name="input_developer_users"></a> [developer\_users](#input\_developer\_users) | List of Kubernetes developers. | `list(string)` | n/a | yes |
