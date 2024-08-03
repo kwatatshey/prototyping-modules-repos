@@ -60,11 +60,11 @@ module "eks_blueprints_addons" {
     # }
 
 
-    amazon-cloudwatch-observability = {
-      most_recent       = true
-      resolve_conflicts = "OVERWRITE"
-      # service_account_role_arn = var.eks_addons_service_account_role_arn
-    }
+    # amazon-cloudwatch-observability = {
+    #   most_recent       = true
+    #   resolve_conflicts = "OVERWRITE"
+    #   # service_account_role_arn = var.eks_addons_service_account_role_arn
+    # }
     kube-proxy = {
       most_recent       = true
       resolve_conflicts = "OVERWRITE"

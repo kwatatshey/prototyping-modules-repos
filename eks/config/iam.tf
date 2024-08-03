@@ -7,6 +7,14 @@ locals {
     }
   ]
 
+  cross_account_admin_role_map_roles = [
+    for cross_account_admin_role in var.cross_account_admin_roles : {
+      rolearn  = cross_account_admin_role
+      username = cross_account_admin_role
+      groups   = ["system:masters"]
+    }
+  ]
+
   developer_role_map_roles = [
     for developer_role in var.developer_roles : {
       rolearn  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${developer_role}"
@@ -47,6 +55,7 @@ resource "kubernetes_config_map_v1_data" "aws_auth_users" {
     mapUsers = yamlencode(local.developer_user_map_users)
     mapRoles = yamlencode(concat(
       local.admin_role_map_roles,
+      local.cross_account_admin_role_map_roles,
       local.developer_role_map_roles,
       local.karpenter_role_map_role
     ))

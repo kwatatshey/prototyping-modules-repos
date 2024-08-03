@@ -13,7 +13,7 @@ module "ebs_kms_key" {
     # required for the ASG to manage encrypted volumes for nodes
     "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",
     # required for the cluster / persistentvolume-controller to create encrypted PVCs
-    var.cluster_iam_role_arn,
+    var.cluster_iam_role_arn
   ]
 
   # Aliases
